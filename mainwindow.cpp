@@ -2,18 +2,29 @@
 #include "ui_mainwindow.h"
 #include <stdlib.h>
 
+#define SHARED 0
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    // Cria semaforos para região crítica, um vetor ou um para cada?
+
+    semaphore = new std::vector<QSemaphore*>();
+    for (int i = 0; i < 7; i++) {
+        QSemaphore sem(1);
+        semaphore->push_back(&sem);
+    }
+
+
     //Cria o trem com seu (ID, posição X, posição Y)
-    trem1 = new Trem(1,60,30,60,30);
-    trem2 = new Trem(2,330,30,330,30);
-    trem3 = new Trem(3,600,30,600,30);
-    trem4 = new Trem(4,190,150,190,150);
-    trem5 = new Trem(5,460,150,460,150);
+    trem1 = new Trem(1,60,30,60,30, semaphore);
+    trem2 = new Trem(2,330,30,330,30, semaphore);
+    trem3 = new Trem(3,600,30,600,30, semaphore);
+    trem4 = new Trem(4,190,150,190,150, semaphore);
+    trem5 = new Trem(5,460,150,460,150, semaphore);
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -29,7 +40,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
 
 
-
+//    for ( int i = 0; i<7;i++){
+//        sem_destroy(&rg[i]);
+//    }
 }
 
 //Função que será executada quando o sinal UPDATEGUI for emitido
@@ -49,10 +62,17 @@ void MainWindow::updateInterface(int id, int x, int y){
         break;
     case 5: //Atualiza a posição do objeto da tela (quadrado) que representa o trem2
         ui->label_trem5->setGeometry(x,y,21,17);
+
         break;
     default:
         break;
     }
+    ui->label->setText(QString::number(trem1->getX())+" - "+QString::number(trem1->getY()));
+    ui->label_2->setText( QString::number(trem2->getX())+" - "+QString::number(trem2->getY()));
+    ui->label_3->setText( QString::number(trem3->getX())+" - "+QString::number(trem3->getY()));
+    ui->label_4->setText( QString::number(trem4->getX())+" - "+QString::number(trem4->getY()));
+    ui->label_5->setText( QString::number(trem5->getX())+" - "+QString::number(trem5->getY()));
+    ui->label_6->setText(QString::number(trem1->getMolex()));
 }
 
 MainWindow::~MainWindow()

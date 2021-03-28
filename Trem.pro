@@ -14,9 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
+    semaforo.cpp \
     trem.cpp
 
 HEADERS  += mainwindow.h \
+    semaforo.h \
     trem.h
 
 FORMS    += mainwindow.ui
+
+QMAKE_CXXFLAGS += -std=c++0x -pthread
+LIBS += -pthread

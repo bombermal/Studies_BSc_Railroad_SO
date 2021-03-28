@@ -2,6 +2,8 @@
 #define TREM_H
 
 #include <QThread>
+#include <qsemaphore.h>
+#include <pthread.h>
 
 /*
  * Classe Trem herda QThread
@@ -13,11 +15,14 @@
 class Trem: public QThread{
  Q_OBJECT
 public:
-    Trem(int,int,int, int, int);  //construtor
+    Trem(int,int,int, int, int,std::vector<QSemaphore*> *);  //construtor
     void run();
     void updatePosition();
-    void setVelocity(int v);//função a ser executada pela thread
-
+    void setVelocity(int);//função a ser executada pela thread
+    void updateSemaphore();
+    int getX();
+    int getY();
+    int getMolex();
 
 //Cria um sinal
 signals:
@@ -30,6 +35,7 @@ private:
    int velocidade;  //Velocidade. É o tempo de dormir em milisegundos entre a mudança de posição do trem
    int startx;
    int starty;
+   std::vector<QSemaphore*> *semaphore;
 };
 
 #endif // TREM_H

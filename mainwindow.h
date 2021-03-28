@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "trem.h"
+#include <qsemaphore.h>
 
 namespace Ui {
 class MainWindow;
@@ -43,7 +44,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
+    std::vector<QSemaphore*> *semaphore;
     //Cria os objetos TREM's
     Trem *trem1;
     Trem *trem2;
