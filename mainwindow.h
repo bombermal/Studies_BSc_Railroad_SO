@@ -44,7 +44,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    std::vector<QSemaphore*> *semaphore;
+    std::vector<QSemaphore*> semaphore;
     //Cria os objetos TREM's
     Trem *trem1;
     Trem *trem2;

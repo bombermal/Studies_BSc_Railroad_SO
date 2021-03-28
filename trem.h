@@ -15,14 +15,14 @@
 class Trem: public QThread{
  Q_OBJECT
 public:
-    Trem(int,int,int, int, int,std::vector<QSemaphore*> *);  //construtor
+    Trem(int,int,int, int, int,std::vector<QSemaphore*>);  //construtor
     void run();
     void updatePosition();
     void setVelocity(int);//função a ser executada pela thread
     void updateSemaphore();
     int getX();
     int getY();
-    int getMolex();
+    int getSem(int);
 
 //Cria um sinal
 signals:
@@ -35,7 +35,7 @@ private:
    int velocidade;  //Velocidade. É o tempo de dormir em milisegundos entre a mudança de posição do trem
    int startx;
    int starty;
-   std::vector<QSemaphore*> *semaphore;
+   std::vector<QSemaphore*> semaphore;
 };
 
 #endif // TREM_H

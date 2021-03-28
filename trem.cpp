@@ -2,7 +2,7 @@
 #include <QtCore>
 
 //Construtor
-Trem::Trem(int ID, int x, int y, int startx, int starty, std::vector<QSemaphore*> *semaphore){
+Trem::Trem(int ID, int x, int y, int startx, int starty, std::vector<QSemaphore*> semaphore){
     this->ID = ID;
     this->x = x;
     this->y = y;
@@ -32,7 +32,7 @@ void Trem::updatePosition(){
 // Fuçãoq ue define a velocidade
 
 void Trem::setVelocity(int v){
-    velocidade = v;
+    this->velocidade = v;
 }
 int Trem::getX(){
     return this->x;
@@ -40,61 +40,83 @@ int Trem::getX(){
 int Trem::getY(){
     return this->y;
 }
-int Trem::getMolex(){
-    return this->semaphore->at(0)->available();
+int Trem::getSem(int p){
+    return this->semaphore.at(p)->available();
 }
 
 void Trem::updateSemaphore(){
     switch(ID){
         case 1:
-            if ( x == 320 && y == 30 ){
-                semaphore->at(0)->acquire();
+            if ( x == 310 && y == 30 ){
+                semaphore.at(0)->acquire();
+                semaphore.at(2)->acquire();
             }
-            if( x <= 320 && y == 150 ){
-                 semaphore->at(0)->release();
-                 semaphore->at(2)->acquire();
+            if( x == 310 && y == 150 ){
+                semaphore.at(0)->release();
+            }
+            if( x == 170 && y == 150 ){
+                semaphore.at(2)->release();
             }
         break;
         case 2:
-            if ( x == 340 && y == 150 ){
-                semaphore->at(0)->acquire();
+            if ( x == 580 && y == 30 ){
+                semaphore.at(1)->acquire();
+                semaphore.at(4)->acquire();
             }
-            if ( x == 340 && y == 30 ){
-                semaphore->at(0)->release();
+            if ( x == 480 && y == 150 ){
+                if ( semaphore.at(2)->tryAcquire() && semaphore.at(3)->tryAcquire()){
+                    semaphore.at(1)->release();
+                    semaphore.at(4)->release();
+
+                }
+            }
+            if ( x == 350 && y == 30 ){
+                semaphore.at(2)->release();
+                semaphore.at(3)->release();
             }
         break;
         case 3:
             if ( x == 750 && y == 150 ){
-                semaphore->at(1)->acquire();
-                semaphore->at(5)->acquire();
+                semaphore.at(1)->acquire();
+                semaphore.at(5)->acquire();
             }
-            if ( x == 610 && y == 30 ){
-                semaphore->at(1)->release();
-                semaphore->at(5)->release();
+            if ( x == 600 && y == 130 ){
+                semaphore.at(5)->release();
+            }
+            if ( x == 620 && y == 30 ){
+                semaphore.at(1)->release();
             }
         break;
         case 4:
-            if ( x == 190 && y == 140 ){
-                semaphore->at(0)->acquire();
-                semaphore->at(2)->acquire();
-                semaphore->at(3)->acquire();
+            if ( x == 190 && y == 170 ){
+                semaphore.at(2)->acquire();
+                semaphore.at(3)->acquire();
+                semaphore.at(6)->acquire();
             }
-            if ( x == 460 && y == 160 ){
-                semaphore->at(0)->release();
-                semaphore->at(2)->release();
-                semaphore->at(3)->release();
+            if ( x == 350 && y == 150 ){
+                semaphore.at(2)->release();
+            }
+            if ( x == 460 && y == 170 ){
+                semaphore.at(3)->release();
+            }
+            if ( x == 440 && y == 270 ){
+                semaphore.at(6)->release();
             }
         break;
         case 5:
             if ( x == 480 && y == 270 ){
-                semaphore->at(4)->acquire();
-                semaphore->at(5)->acquire();
-                semaphore->at(6)->acquire();
+                semaphore.at(4)->acquire();
+                semaphore.at(5)->acquire();
+                semaphore.at(6)->acquire();
+            }
+            if ( x == 480 && y == 150 ){
+                semaphore.at(6)->release();
+            }
+            if ( x == 620 && y == 150 ){
+                semaphore.at(4)->release();
             }
             if ( x == 730 && y == 170 ){
-                semaphore->at(4)->release();
-                semaphore->at(5)->release();
-                semaphore->at(6)->release();
+                semaphore.at(5)->release();
             }
         break;
     }
@@ -106,21 +128,15 @@ void Trem::updateSemaphore(){
 //Função a ser executada após executar trem->START
 void Trem::run(){
     while(true){
-//        switch (ID) {
-//            case 1:
-//                updateSemaphore();
-//            break;
-//            case 2:
-//                updateSemaphore();
-//            break;
-
-//        }
-//        sem_release(&rg);
-//        sem_acquire(&rg);
-//        sem_acquire(&rg);
-//        qDebug() << "teste";
+        //verifica
         updateSemaphore();
+        //trava
+
         updatePosition();
+        //passa
+        //destrava
+        //atualiza posção
+
         emit updateGUI(ID, x,y);
 
 

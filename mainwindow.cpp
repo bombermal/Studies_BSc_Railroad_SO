@@ -1,8 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <stdlib.h>
+#include <QDebug>
 
 #define SHARED 0
+
+QSemaphore sem(1);
+QSemaphore sem2(1);
+QSemaphore sem3(1);
+QSemaphore sem4(1);
+QSemaphore sem5(1);
+QSemaphore sem6(1);
+QSemaphore sem7(1);
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,12 +21,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Cria semaforos para região crítica, um vetor ou um para cada?
 
-    semaphore = new std::vector<QSemaphore*>();
-    for (int i = 0; i < 7; i++) {
-        QSemaphore sem(1);
-        semaphore->push_back(&sem);
-    }
-
+    semaphore.push_back(&sem);
+    semaphore.push_back(&sem2);
+    semaphore.push_back(&sem3);
+    semaphore.push_back(&sem4);
+    semaphore.push_back(&sem5);
+    semaphore.push_back(&sem6);
+    semaphore.push_back(&sem7);
 
     //Cria o trem com seu (ID, posição X, posição Y)
     trem1 = new Trem(1,60,30,60,30, semaphore);
@@ -40,9 +50,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
 
 
-//    for ( int i = 0; i<7;i++){
-//        sem_destroy(&rg[i]);
-//    }
+//    ~QSemaphore sem();
+//    ~QSemaphore sem2();
+//    ~QSemaphore sem3();
+//    ~QSemaphore sem4();
+//    ~QSemaphore sem5();
+//    ~QSemaphore sem6();
+//    ~QSemaphore sem7();
 }
 
 //Função que será executada quando o sinal UPDATEGUI for emitido
@@ -72,7 +86,13 @@ void MainWindow::updateInterface(int id, int x, int y){
     ui->label_3->setText( QString::number(trem3->getX())+" - "+QString::number(trem3->getY()));
     ui->label_4->setText( QString::number(trem4->getX())+" - "+QString::number(trem4->getY()));
     ui->label_5->setText( QString::number(trem5->getX())+" - "+QString::number(trem5->getY()));
-    ui->label_6->setText(QString::number(trem1->getMolex()));
+    ui->label_r1->setText("R0: "+QString::number(trem4->getSem(0))+" →");
+    ui->label_r2->setText("R1: "+QString::number(trem4->getSem(1))+" →");
+    ui->label_r3->setText("↑ R2: "+QString::number(trem4->getSem(2)));
+    ui->label_r4->setText("↓ R3: "+QString::number(trem4->getSem(3)));
+    ui->label_r5->setText("↑ R4: "+QString::number(trem4->getSem(4)));
+    ui->label_r6->setText("↓ R5: "+QString::number(trem4->getSem(5)));
+    ui->label_r7->setText("R6: "+QString::number(trem4->getSem(6))+" →");
 }
 
 MainWindow::~MainWindow()

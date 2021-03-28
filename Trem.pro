@@ -25,3 +25,5 @@ FORMS    += mainwindow.ui
 
 QMAKE_CXXFLAGS += -std=c++0x -pthread
 LIBS += -pthread
+CONFIG+=declarative_debug
+CONFIG+=qml_debug
