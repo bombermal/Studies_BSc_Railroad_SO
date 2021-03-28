@@ -5,13 +5,13 @@
 
 #define SHARED 0
 
-QSemaphore sem(1);
-QSemaphore sem2(1);
-QSemaphore sem3(1);
-QSemaphore sem4(1);
-QSemaphore sem5(1);
-QSemaphore sem6(1);
-QSemaphore sem7(1);
+QSemaphore sem(0);
+QSemaphore sem2(0);
+QSemaphore sem3(0);
+QSemaphore sem4(0);
+QSemaphore sem5(0);
+QSemaphore sem6(0);
+QSemaphore sem7(0);
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -49,14 +49,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(trem4,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
 
-
-//    ~QSemaphore sem();
-//    ~QSemaphore sem2();
-//    ~QSemaphore sem3();
-//    ~QSemaphore sem4();
-//    ~QSemaphore sem5();
-//    ~QSemaphore sem6();
-//    ~QSemaphore sem7();
 }
 
 //Função que será executada quando o sinal UPDATEGUI for emitido

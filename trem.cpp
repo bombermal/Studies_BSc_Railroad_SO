@@ -64,14 +64,15 @@ void Trem::updateSemaphore(){
                 semaphore.at(4)->acquire();
             }
             if ( x == 480 && y == 150 ){
-                if ( semaphore.at(2)->tryAcquire() && semaphore.at(3)->tryAcquire()){
+                    semaphore.at(0)->acquire();
+                    semaphore.at(3)->acquire();
+            }
+            if (x == 440 && y == 150 ){
                     semaphore.at(1)->release();
                     semaphore.at(4)->release();
-
-                }
             }
             if ( x == 350 && y == 30 ){
-                semaphore.at(2)->release();
+                semaphore.at(0)->release();
                 semaphore.at(3)->release();
             }
         break;
@@ -91,10 +92,12 @@ void Trem::updateSemaphore(){
             if ( x == 190 && y == 170 ){
                 semaphore.at(2)->acquire();
                 semaphore.at(3)->acquire();
-                semaphore.at(6)->acquire();
             }
             if ( x == 350 && y == 150 ){
                 semaphore.at(2)->release();
+            }
+            if ( x == 440 && y == 150 ){
+                semaphore.at(6)->acquire();
             }
             if ( x == 460 && y == 170 ){
                 semaphore.at(3)->release();
