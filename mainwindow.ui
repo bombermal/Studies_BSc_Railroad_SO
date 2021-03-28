@@ -312,71 +312,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>115</x>
-      <y>90</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>1</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>387</x>
-      <y>90</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>647</x>
-      <y>90</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>3</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>237</x>
-      <y>210</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>4</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>507</x>
-      <y>210</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>5</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_trem3">
     <property name="geometry">
      <rect>
@@ -606,7 +541,7 @@
    <widget class="QLabel" name="label_r3">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>250</x>
       <y>170</y>
       <width>51</width>
       <height>20</height>
@@ -619,7 +554,7 @@
    <widget class="QLabel" name="label_r4">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>380</x>
       <y>120</y>
       <width>50</width>
       <height>20</height>
@@ -668,108 +603,69 @@
      <string>R7</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="veloci_1">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>0</y>
-      <width>81</width>
+      <x>90</x>
+      <y>50</y>
+      <width>121</width>
       <height>18</height>
      </rect>
     </property>
     <property name="text">
-     <string>X: 330 Y: 30</string>
+     <string>Trem 1: 0 ms/un</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_7">
+   <widget class="QLabel" name="veloci_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>0</y>
-      <width>81</width>
+      <x>360</x>
+      <y>50</y>
+      <width>121</width>
       <height>18</height>
      </rect>
     </property>
     <property name="text">
-     <string>X: 600 Y: 30</string>
+     <string>Trem 2: 0 ms/uns</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_8">
+   <widget class="QLabel" name="veloci_3">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>120</y>
-      <width>81</width>
+      <x>630</x>
+      <y>50</y>
+      <width>121</width>
       <height>18</height>
      </rect>
     </property>
     <property name="text">
-     <string>X: 730 Y: 150</string>
+     <string>Trem 3: 0 ms/un</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_9">
+   <widget class="QLabel" name="veloci_4">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>170</y>
-      <width>81</width>
+      <x>220</x>
+      <y>250</y>
+      <width>121</width>
       <height>18</height>
      </rect>
     </property>
     <property name="text">
-     <string>X: 600 Y: 150</string>
+     <string>Trem 4: 0 ms/un</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_10">
+   <widget class="QLabel" name="veloci_5">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>120</y>
-      <width>81</width>
+      <x>490</x>
+      <y>250</y>
+      <width>121</width>
       <height>18</height>
      </rect>
     </property>
     <property name="text">
-     <string>X: 460 Y: 150</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_11">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>170</y>
-      <width>81</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>X: 330 Y: 150</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_12">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>130</y>
-      <width>81</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>X: 190 Y: 150</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_13">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>290</y>
-      <width>81</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>X: 460 Y: 270</string>
+     <string>Trem 5: 0 ms/un</string>
     </property>
    </widget>
    <zorder>label_trilho2_4</zorder>
@@ -791,11 +687,6 @@
    <zorder>label_trilho3_3</zorder>
    <zorder>label_trilho3_1</zorder>
    <zorder>label_trilho3_2</zorder>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_5</zorder>
    <zorder>label_trem3</zorder>
    <zorder>label_trem4</zorder>
    <zorder>label_trem5</zorder>
@@ -814,14 +705,11 @@
    <zorder>label_r5</zorder>
    <zorder>label_r6</zorder>
    <zorder>label_r7</zorder>
-   <zorder>label_6</zorder>
-   <zorder>label_7</zorder>
-   <zorder>label_8</zorder>
-   <zorder>label_9</zorder>
-   <zorder>label_10</zorder>
-   <zorder>label_11</zorder>
-   <zorder>label_12</zorder>
-   <zorder>label_13</zorder>
+   <zorder>veloci_1</zorder>
+   <zorder>veloci_2</zorder>
+   <zorder>veloci_3</zorder>
+   <zorder>veloci_4</zorder>
+   <zorder>veloci_5</zorder>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

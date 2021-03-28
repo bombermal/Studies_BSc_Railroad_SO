@@ -22,28 +22,23 @@ public slots:
     void updateInterface(int,int,int);
 
 private slots:
+    // Botões
     void on_pb_liga_clicked();
-
     void on_pb_para_clicked();
-
     void on_pb_max_clicked();
-
     void on_pb_min_clicked();
-
     void on_pb_random_clicked();
 
+    // Sliders
     void on_t1_slider_valueChanged(int value);
-
     void on_t2_slider_valueChanged(int value);
-
     void on_t3_slider_valueChanged(int value);
-
     void on_t4_slider_valueChanged(int value);
-
     void on_t5_slider_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;
+    // Lista de semáforos
     std::vector<QSemaphore*> semaphore;
     //Cria os objetos TREM's
     Trem *trem1;
